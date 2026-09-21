@@ -1,0 +1,209 @@
+{
+  "data_note": "Synthetic demonstration data. Not real drug test imagery.",
+  "dataset_version": "synthetic-v1",
+  "random_seed": 42,
+  "profile_id": "DEMO-ASSAY-001",
+  "samples": [
+    {
+      "sample_id": "DEMO-POS-001",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": 8.22,
+        "noise_sigma": 2.32,
+        "rotation_deg": 1.79
+      },
+      "image_path": "data/demo/positive/DEMO-POS-001.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-POS-002",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -13.46,
+        "noise_sigma": 3.44,
+        "rotation_deg": -1.88
+      },
+      "image_path": "data/demo/positive/DEMO-POS-002.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-POS-003",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -13.07,
+        "noise_sigma": 2.45,
+        "rotation_deg": -0.59
+      },
+      "image_path": "data/demo/positive/DEMO-POS-003.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-POS-004",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -3.22,
+        "noise_sigma": 2.33,
+        "rotation_deg": 1.16
+      },
+      "image_path": "data/demo/positive/DEMO-POS-004.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-POS-005",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": 11.37,
+        "noise_sigma": 1.32,
+        "rotation_deg": -2.15
+      },
+      "image_path": "data/demo/positive/DEMO-POS-005.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-NEG-001",
+      "class": "NEGATIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -10.67,
+        "noise_sigma": 1.1,
+        "rotation_deg": -2.25
+      },
+      "image_path": "data/demo/negative/DEMO-NEG-001.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-NEG-002",
+      "class": "NEGATIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -7.11,
+        "noise_sigma": 2.54,
+        "rotation_deg": 1.25
+      },
+      "image_path": "data/demo/negative/DEMO-NEG-002.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-NEG-003",
+      "class": "NEGATIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -6.12,
+        "noise_sigma": 1.85,
+        "rotation_deg": -1.08
+      },
+      "image_path": "data/demo/negative/DEMO-NEG-003.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-NEG-004",
+      "class": "NEGATIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -10.78,
+        "noise_sigma": 1.22,
+        "rotation_deg": 0.94
+      },
+      "image_path": "data/demo/negative/DEMO-NEG-004.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-NEG-005",
+      "class": "NEGATIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": 5.04,
+        "noise_sigma": 1.08,
+        "rotation_deg": 0.72
+      },
+      "image_path": "data/demo/negative/DEMO-NEG-005.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-INC-001",
+      "class": "INCONCLUSIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -3.42,
+        "noise_sigma": 2.29,
+        "rotation_deg": -1.27
+      },
+      "image_path": "data/demo/inconclusive/DEMO-INC-001.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-INC-002",
+      "class": "INCONCLUSIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -7.95,
+        "noise_sigma": 3.46,
+        "rotation_deg": 0.36
+      },
+      "image_path": "data/demo/inconclusive/DEMO-INC-002.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-INC-003",
+      "class": "INCONCLUSIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": -1.07,
+        "noise_sigma": 3.13,
+        "rotation_deg": 0.24
+      },
+      "image_path": "data/demo/inconclusive/DEMO-INC-003.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-INC-004",
+      "class": "INCONCLUSIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": 11.89,
+        "noise_sigma": 2.36,
+        "rotation_deg": -2.43
+      },
+      "image_path": "data/demo/inconclusive/DEMO-INC-004.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-INC-005",
+      "class": "INCONCLUSIVE",
+      "seed": 42,
+      "generation_params": {
+        "brightness_shift": 11.8,
+        "noise_sigma": 2.02,
+        "rotation_deg": -0.96
+      },
+      "image_path": "data/demo/inconclusive/DEMO-INC-005.png",
+      "scenario_type": "standard"
+    },
+    {
+      "sample_id": "DEMO-EDGE-BLURRED",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "blur_ksize": 25
+      },
+      "image_path": "data/demo/edge_cases/DEMO-EDGE-BLURRED.png",
+      "scenario_type": "blurred_quality_fail"
+    },
+    {
+      "sample_id": "DEMO-EDGE-OVEREXPOSED",
+      "class": "POSITIVE",
+      "seed": 42,
+      "generation_params": {
+        "overexpose": true,
+        "add_glare": true
+      },
+      "image_path": "data/demo/edge_cases/DEMO-EDGE-OVEREXPOSED.png",
+      "scenario_type": "overexposed_glare_fail"
+    }
+  ]
+}
