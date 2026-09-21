@@ -119,8 +119,10 @@ def render_home_page() -> None:
 
     with col_card:
         with st.container(border=True):
-            st.markdown("#### 📄 Printable Reference Card")
-            st.caption("Standard A4 / PVC ID card printable reference card with 50mm ruler.")
+            st.markdown("#### 📄 Submission & Deployment Assets")
+            st.caption("Official SIH 2026 Project Report and Printable 300 DPI Reference Card.")
+
+            # 1. Printable Reference Card
             pdf_path = Path("assets/reference_cards/RECTRA_PRINTABLE_REFERENCE_CARD.pdf")
             if not pdf_path.exists():
                 from scripts.generate_printable_cards import generate_printable_card_pdf
@@ -137,6 +139,32 @@ def render_home_page() -> None:
                 mime="application/pdf",
                 use_container_width=True,
             )
+
+            # 2. Comprehensive SIH Project Report (HTML)
+            report_html_path = Path("submission/REACTRA_SIH2026_PROJECT_REPORT.html")
+            if report_html_path.exists():
+                with open(report_html_path, "rb") as f:
+                    html_bytes = f.read()
+                st.download_button(
+                    "📊 Download Full Project Report (HTML / PDF)",
+                    data=html_bytes,
+                    file_name="REACTRA_SIH2026_PROJECT_REPORT.html",
+                    mime="text/html",
+                    use_container_width=True,
+                )
+
+            # 3. Comprehensive SIH Project Report (Markdown)
+            report_md_path = Path("submission/REACTRA_SIH2026_PROJECT_REPORT.md")
+            if report_md_path.exists():
+                with open(report_md_path, "rb") as f:
+                    md_bytes = f.read()
+                st.download_button(
+                    "📝 Download Pitch & PPT Report (Markdown)",
+                    data=md_bytes,
+                    file_name="REACTRA_SIH2026_PROJECT_REPORT.md",
+                    mime="text/markdown",
+                    use_container_width=True,
+                )
 
 
 def render_field_operator_workflow() -> None:
