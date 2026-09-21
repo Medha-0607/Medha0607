@@ -848,19 +848,80 @@ def render_demo_page() -> None:
         st.caption("Offline evaluation across synthetic benchmark set.")
         eval_data = load_evaluation_results()
         if eval_data:
+            total_samples = eval_data.get("total_evaluated_samples") or eval_data.get(
+                "total_samples", 0
+            )
+
+            # Safely extract precision (dict or float)
+            raw_prec = eval_data.get("precision", 0.0)
+            if isinstance(raw_prec, dict):
+                prec_val = sum(raw_prec.values()) / max(len(raw_prec), 1)
+            else:
+                prec_val = float(raw_prec)
+
+            # Safely extract recall (dict or float)
+            raw_rec = eval_data.get("recall", 0.0)
+            if isinstance(raw_rec, dict):
+                rec_val = sum(raw_rec.values()) / max(len(raw_rec), 1)
+            else:
+                rec_val = float(raw_rec)
+
+            # Safely extract F1 score
+            if "macro_f1" in eval_data:
+                f1_val = float(eval_data["macro_f1"])
+            else:
+                raw_f1 = eval_data.get("f1") or eval_data.get("f1_score", 0.0)
+                if isinstance(raw_f1, dict):
+                    f1_val = sum(raw_f1.values()) / max(len(raw_f1), 1)
+                else:
+                    f1_val = float(raw_f1)
+
             m_cols = st.columns(4)
             with m_cols[0]:
-                st.metric("Total Samples", eval_data.get("total_samples", 0))
+                st.metric("Total Samples", total_samples)
             with m_cols[1]:
-                st.metric("Precision", f"{eval_data.get('precision', 0.0) * 100:.1f}%")
+                st.metric("Macro Precision", f"{prec_val * 100:.1f}%")
             with m_cols[2]:
-                st.metric("Recall", f"{eval_data.get('recall', 0.0) * 100:.1f}%")
+                st.metric("Macro Recall", f"{rec_val * 100:.1f}%")
             with m_cols[3]:
-                st.metric("F1 Score", f"{eval_data.get('f1_score', 0.0):.2f}")
+                st.metric("Macro F1", f"{f1_val:.2f}")
+
+            classes = eval_data.get("classes", ["POSITIVE", "NEGATIVE", "INCONCLUSIVE"])
+
+            # Render per-class breakdown if available
+            if isinstance(raw_prec, dict) and isinstance(raw_rec, dict):
+                import pandas as pd
+
+                st.markdown("#### Per-Class Performance")
+                rows = []
+                for c in classes:
+                    p = raw_prec.get(c, 0.0)
+                    r = raw_rec.get(c, 0.0)
+                    f_val_c = (
+                        eval_data.get("f1", {}).get(c, 0.0)
+                        if isinstance(eval_data.get("f1"), dict)
+                        else 0.0
+                    )
+                    rows.append(
+                        {
+                            "Class": c,
+                            "Precision": f"{p * 100:.1f}%",
+                            "Recall": f"{r * 100:.1f}%",
+                            "F1 Score": f"{f_val_c:.2f}",
+                        }
+                    )
+                st.dataframe(pd.DataFrame(rows), hide_index=True, use_container_width=True)
 
             if "confusion_matrix" in eval_data:
-                st.markdown("#### Confusion Matrix")
-                st.dataframe(eval_data["confusion_matrix"])
+                import pandas as pd
+
+                st.markdown("#### Confusion Matrix (Actual Rows × Predicted Cols)")
+                cm_df = pd.DataFrame(
+                    eval_data["confusion_matrix"],
+                    index=[f"Actual {c}" for c in classes],
+                    columns=[f"Pred {c}" for c in classes],
+                )
+                st.dataframe(cm_df, use_container_width=True)
         else:
             st.info("Evaluation metrics file not found.")
 
